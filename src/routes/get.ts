@@ -13,8 +13,8 @@ export default function(
     }, {
         detail: {
             tags: ["Root"],
-            summary: "Root availability check",
-            description: "Returns a friendly greeting and echoes any resolved route parameters (none for root).",
+            summary: "Test",
+            description: "Test endpoint.",
             response: {
                 200: t.Object({
                     test: t.String(),

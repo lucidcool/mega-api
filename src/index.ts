@@ -2,16 +2,16 @@ import { Elysia } from "elysia";
 import { AppContext } from "./core/AppContext";
 import { registerRoutes } from "./core/Router";
 import openapi from "@elysiajs/openapi";
+import 'dotenv/config';
 
 const app = new Elysia();
 const ctx = new AppContext();
-
 app.decorate("ctx", ctx);
 
-// Register routes first so OpenAPI can pick them up after plugin initialization (plugin can be before too but keeping order explicit)
-registerRoutes(app, ctx);
+// Initialize context services (SpotifyService etc.) before routes
+await ctx.init();
 
-// OpenAPI / Scalar documentation setup
+// OpenAPI first so subsequent dynamic routes get documented
 app.use(openapi({
 	documentation: {
 		info: {
@@ -24,6 +24,8 @@ app.use(openapi({
 		]
 	}
 }));
+
+registerRoutes(app, ctx);
 
 app.listen(3000);
 
