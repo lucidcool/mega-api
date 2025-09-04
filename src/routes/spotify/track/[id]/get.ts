@@ -25,7 +25,8 @@ export default function(
                     name: "id",
                     in: "path",
                     required: true,
-                    schema: t.String()
+                    schema: t.String(),
+                    example: '2GEoDwjcRfDxHOiLbi7CWS'
                 }
             ],
             response: {

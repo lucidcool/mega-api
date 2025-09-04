@@ -28,7 +28,7 @@ export default function(
       summary: 'Get track canvas',
       description: 'Returns the Spotify canvas URL for a track if available.',
       parameters: [
-        { name: 'id', in: 'path', required: true, schema: t.String() }
+        { name: 'id', in: 'path', required: true, schema: t.String(), example: '2GEoDwjcRfDxHOiLbi7CWS' }
       ],
       response: {
         200: t.Object({
