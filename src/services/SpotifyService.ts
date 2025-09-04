@@ -17,13 +17,14 @@ interface SpotifyServiceOptions {
     secretsRefreshIntervalMs?: number;
 }
 
-interface SpotifyTrack {
+export interface SpotifyTrack {
     id: string;
     name: string;
     artists: Array<{ name: string; id: string }>;
-    album: { name: string; id: string };
+    album: { name: string; id: string; images: Array<{ url: string; width: number; height: number }> };
     duration_ms: number;
     popularity: number;
+    preview_url: string | null;
 }
 
 interface SpotifyAlbum {
@@ -33,6 +34,7 @@ interface SpotifyAlbum {
     release_date: string;
     total_tracks: number;
     tracks: { items: SpotifyTrack[] };
+    images: Array<{ url: string; width: number; height: number }>;
 }
 
 interface SpotifyPlaylist {

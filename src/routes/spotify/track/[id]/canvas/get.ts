@@ -7,7 +7,6 @@ export default function(
   routePath: string,
   method: string
 ) {
-  // routePath will be /spotify/track/:id/canvas
   app[method as 'get'](routePath, async ({ params }) => {
     const { id } = params as { id: string };
     const canvas = await ctx.spotify.getCanvasByTrackId(id);
